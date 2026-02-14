@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background-color: #000;
+    color: #d4af37; /* gold */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+header {
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0;
+}
+
+.tagline {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+#bottles {
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+#about {
+    padding: 50px 20px;
+    background-color: #111;
+}
+
+footer {
+    padding: 30px 20px;
+    font-size: 1.2em;
+    color: #d4af37;
+}
