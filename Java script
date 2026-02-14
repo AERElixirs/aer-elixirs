@@ -1,0 +1,41 @@
+// Set up the Three.js scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('bottleCanvas'),
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+// Add a light to the scene
+const light = new THREE.AmbientLight(0xffffff, 1); // white light
+scene.add(light);
+
+// Create a bottle placeholder using a cylinder
+const bottleGeometry = new THREE.CylinderGeometry(0.5, 0.5, 2, 32);
+const bottleMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 }); // Start with red for Iris
+const bottle = new THREE.Mesh(bottleGeometry, bottleMaterial);
+scene.add(bottle);
+
+// Position the bottle
+camera.position.z = 5;
+
+// Animation loop to rotate the bottle
+function animate() {
+    requestAnimationFrame(animate);
+    bottle.rotation.y += 0.01; // Rotate around Y-axis
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
